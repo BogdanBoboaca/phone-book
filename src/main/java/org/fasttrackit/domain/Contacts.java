@@ -1,18 +1,18 @@
 package org.fasttrackit.domain;
 
-public class Users {
+public class Contacts {
 
-    private long user_id;
+    private long contact_id;
     private String name;
     private String first_name;
     private String phone_number;
 
     public long getUser_id() {
-        return user_id;
+        return contact_id;
     }
 
-    public void setUser_id(long user_id) {
-        this.user_id = user_id;
+    public void setUser_id(long contact_id) {
+        this.contact_id = contact_id;
     }
 
     public String getName() {
@@ -42,7 +42,7 @@ public class Users {
     @Override
     public String toString() {
         return "Users{" +
-                "user_id=" + user_id +
+                "user_id=" + contact_id +
                 ", name='" + name + '\'' +
                 ", first_name='" + first_name + '\'' +
                 ", phone_number='" + phone_number + '\'' +
