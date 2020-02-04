@@ -13,22 +13,22 @@ public class ContactService {
 
     private ContactsRepository contactsRepository = new ContactsRepository();
 
-    public void createContact(CreateContactRequest request) throws IOException, SQLException {
+    public void createContact(CreateContactRequest request) throws IOException, SQLException, ClassNotFoundException {
         System.out.println("Creating contact" + request);
         contactsRepository.createContact(request);
     }
 
-    public void updateContact (long user_id, UpdateContactRequest request) throws IOException, SQLException {
+    public void updateContact (long id, UpdateContactRequest request) throws IOException, SQLException, ClassNotFoundException {
         System.out.println("Updating contact: " + ": " + request);
-        contactsRepository.updateContact(user_id, request);
+        contactsRepository.updateContact(id, request);
     }
 
-    public void deleteContact (long user_id) throws IOException, SQLException {
-        System.out.println("Delete task" + user_id);
-        contactsRepository.deleteContact(user_id);
+    public void deleteContact (long id) throws IOException, SQLException, ClassNotFoundException {
+        System.out.println("Delete task" + id);
+        contactsRepository.deleteContact(id);
     }
 
-    public List<Contacts> getContact() throws IOException, SQLException {
+    public List<Contacts> getContact() throws IOException, SQLException, ClassNotFoundException {
         System.out.println("Retrieving all tasks.");
         return contactsRepository.getContacts();
     }

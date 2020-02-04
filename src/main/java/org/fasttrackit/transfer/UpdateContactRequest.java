@@ -2,40 +2,40 @@ package org.fasttrackit.transfer;
 
 public class UpdateContactRequest {
 
-    private String name;
-    private String first_name;
-    private String phone_number;
+    private String surName;
+    private String firstName;
+    private String phoneNumber;
 
-    public String getName() {
-        return name;
+    public String getSurName() {
+        return surName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setSurName(String surName) {
+        this.surName = surName;
     }
 
-    public String getFirst_name() {
-        return first_name;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setFirst_name(String first_name) {
-        this.first_name = first_name;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
-    public String getPhone_number() {
-        return phone_number;
+    public String getPhoneNumber() {
+        return phoneNumber;
     }
 
-    public void setPhone_number(String phone_number) {
-        this.phone_number = phone_number;
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 
     @Override
     public String toString() {
         return "UpdateContactRequest{" +
-                "name='" + name + '\'' +
-                ", first_name='" + first_name + '\'' +
-                ", phone_number='" + phone_number + '\'' +
+                "surName='" + surName + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", phoneNumber='" + phoneNumber + '\'' +
                 '}';
     }
 }

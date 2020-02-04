@@ -11,53 +11,53 @@ import java.util.List;
 
 public class ContactsRepository {
 
-    public void createContact(CreateContactRequest request) throws IOException, SQLException {
+    public void createContact(CreateContactRequest request) throws IOException, SQLException, ClassNotFoundException {
 
-        String sql = "INSERT INTO contacts (name, first_name, phone_number) VALUES (?, ?,?)";
+        String sql = "INSERT INTO contacts (surName, firstName, phoneNumber) VALUES (?, ?,?)";
 
         try (Connection connection = DatabaseConfiguration.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(sql)){
 
-            preparedStatement.setString(1,request.getName());
-            preparedStatement.setString(2,request.getFirst_name());
-            preparedStatement.setString(3,request.getPhone_number());
+            preparedStatement.setString(1,request.getSurName());
+            preparedStatement.setString(2,request.getFirstName());
+            preparedStatement.setString(3,request.getPhoneNumber());
 
             preparedStatement.executeUpdate();
         }
     }
 
-    public void updateContact(long contact_id, UpdateContactRequest request) throws IOException, SQLException {
+    public void updateContact(long id, UpdateContactRequest request) throws IOException, SQLException, ClassNotFoundException {
 
-        String sql = "UPDATE contacts SET name = ?, first_name = ?, phone_number = ? WHERE contact_id = ?";
+        String sql = "UPDATE contacts SET surName = ?, firstName = ?, phoneNumber = ? WHERE id = ?";
 
         try (Connection connection = DatabaseConfiguration.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(sql)){
 
-            preparedStatement.setString(1,request.getName());
-            preparedStatement.setString(2,request.getFirst_name());
-            preparedStatement.setString(3,request.getPhone_number());
-            preparedStatement.setLong(4, contact_id);
+            preparedStatement.setString(1,request.getSurName());
+            preparedStatement.setString(2,request.getFirstName());
+            preparedStatement.setString(3,request.getPhoneNumber());
+            preparedStatement.setLong(4, id);
 
             preparedStatement.executeUpdate();
         }
     }
 
-    public void deleteContact(long contact_id) throws IOException, SQLException {
+    public void deleteContact(long id) throws IOException, SQLException, ClassNotFoundException {
 
-        String sql = "DELETE FROM contacts WHERE contact_id = ?";
+        String sql = "DELETE FROM contacts WHERE id = ?";
 
         try (Connection connection = DatabaseConfiguration.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(sql)){
 
-            preparedStatement.setLong(1, contact_id);
+            preparedStatement.setLong(1, id);
 
             preparedStatement.executeUpdate();
         }
     }
 
     // read statement
-    public List<Contacts> getContacts() throws IOException, SQLException {
-        String sql = "SELECT contact_id, name, first_name, phone_number FROM contacts";
+    public List<Contacts> getContacts() throws IOException, SQLException, ClassNotFoundException {
+        String sql = "SELECT id, surName, firstName, phoneNumber FROM contacts";
 
         try (Connection connection = DatabaseConfiguration.getConnection();
              //Statement should be used only for no parameters queries
@@ -70,9 +70,9 @@ public class ContactsRepository {
                 Contacts contact = new Contacts();
 
                 contact.setUser_id(resultSet.getLong("id"));
-                contact.setName(resultSet.getString("name"));
-                contact.setFirst_name(resultSet.getString("first_name"));
-                contact.setPhone_number(resultSet.getString("phone_number"));
+                contact.setName(resultSet.getString("surName"));
+                contact.setFirst_name(resultSet.getString("firstName"));
+                contact.setPhone_number(resultSet.getString("phoneNumber"));
 
                 contacts.add(contact);
             }
